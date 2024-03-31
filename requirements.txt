@@ -1,2 +1,2 @@
-django
-requests
+Django==4.2.11
+requests==2.31.0
