@@ -28,7 +28,6 @@
     },
     "build": {
       "env": {
-        "DJANGO_SECRET_KEY": "@django_secret_key"
       }
     }
   }
