@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "193f-185-107-56-128.ngrok-free.app",
-    ".vercel.app"
+    ".vercel.app",
+    "*"
 ]
 
 
