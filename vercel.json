@@ -1,5 +1,13 @@
 {
-    "version": 2,
-    "buildCommand": "docker build -t my_django_app . && docker run -p 8000:8000 my_django_app"
-  }
-  
+    "builds": [{
+        "src": "PRAnnouncer/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "PRAnnouncer/wsgi.py"
+        }
+    ]
+}
