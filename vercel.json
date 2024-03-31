@@ -1,34 +1,5 @@
 {
     "version": 2,
-    "builds": [
-      {
-        "src": "PRAnnouncer/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "50mb" }
-      }
-    ],
-    "routes": [
-      {
-        "src": "/static/(.*)",
-        "headers": { "cache-control": "s-maxage=31536000,immutable" },
-        "dest": "/static/$1"
-      },
-      {
-        "src": "/media/(.*)",
-        "headers": { "cache-control": "s-maxage=31536000,immutable" },
-        "dest": "/media/$1"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "PRAnnouncer/wsgi.py"
-      }
-    ],
-    "env": {
-      "DJANGO_SETTINGS_MODULE": "PRAnnouncer.settings"
-    },
-    "build": {
-      "env": {
-      }
-    }
+    "buildCommand": "docker build -t my_django_app . && docker run -p 8000:8000 my_django_app"
   }
   
