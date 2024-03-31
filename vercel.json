@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "builds": [
+      {
+        "src": "PRAnnouncer/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "50mb" }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "headers": { "cache-control": "s-maxage=31536000,immutable" },
+        "dest": "/static/$1"
+      },
+      {
+        "src": "/media/(.*)",
+        "headers": { "cache-control": "s-maxage=31536000,immutable" },
+        "dest": "/media/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "PRAnnouncer/wsgi.py"
+      }
+    ],
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "PRAnnouncer.settings"
+    },
+    "build": {
+      "env": {
+        "DJANGO_SECRET_KEY": "@django_secret_key"
+      }
+    }
+  }
+  
